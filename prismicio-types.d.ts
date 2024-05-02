@@ -4,71 +4,6 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type ContentPageDocumentDataSlicesSlice = never;
-
-/**
- * Content for content page documents
- */
-interface ContentPageDocumentData {
-  /**
-   * Slice Zone field in *content page*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: content_page.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<ContentPageDocumentDataSlicesSlice> /**
-   * Meta Description field in *content page*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: content_page.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *content page*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: content_page.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  meta_image: prismic.ImageField<never>;
-
-  /**
-   * Meta Title field in *content page*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: content_page.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_title: prismic.KeyTextField;
-}
-
-/**
- * content page document from Prismic
- *
- * - **API ID**: `content_page`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type ContentPageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<
-    Simplify<ContentPageDocumentData>,
-    "content_page",
-    Lang
-  >;
-
 /**
  * Item in *Settings → Navigation*
  */
@@ -159,7 +94,7 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = ContentPageDocument | SettingsDocument;
+export type AllDocumentTypes = SettingsDocument;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -171,9 +106,6 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      ContentPageDocument,
-      ContentPageDocumentData,
-      ContentPageDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
