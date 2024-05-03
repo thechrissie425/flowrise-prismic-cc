@@ -9,16 +9,16 @@ import Footer from "@/components/Footer";
 import { PrismicPreview } from "@prismicio/next";
 
 const nunito = Nunito({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-nunito',
-})
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-nunito",
+});
 
 const nunitoSans = Nunito_Sans({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-nunito-sans',
-})
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-nunito-sans",
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
