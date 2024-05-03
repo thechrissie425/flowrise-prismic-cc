@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomepageDocumentDataSlicesSlice =
+  | TextWithImageSlice
   | TestimonialsSlice
   | FeaturesSlice
   | HeroSlice;
@@ -586,14 +587,14 @@ export type TextWithImageSliceDefault = prismic.SharedSliceVariation<
  */
 export interface TextWithImageSliceImageRightPrimary {
   /**
-   * Headig field in *TextWithImage → Primary*
+   * Heading field in *TextWithImage → Primary*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
-   * - **API ID Path**: text_with_image.primary.headig
+   * - **API ID Path**: text_with_image.primary.heading
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  headig: prismic.TitleField;
+  heading: prismic.TitleField;
 
   /**
    * Body field in *TextWithImage → Primary*
