@@ -4,6 +4,7 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 // import { components } from "@/slices";
+<script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=cc-flowrise-tutorial"></script>
 
 export default async function Page() {
   const client = createClient();
