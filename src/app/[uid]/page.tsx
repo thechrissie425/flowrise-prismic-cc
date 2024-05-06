@@ -7,6 +7,8 @@ import { components } from "@/slices";
 
 type Params = { uid: string };
 
+export const dynamicParams = false;
+
 export default async function Page({ params }: { params: Params }) {
   const client = createClient();
   const page = await client
@@ -22,9 +24,7 @@ export async function generateMetadata({
   params: Params;
 }): Promise<Metadata> {
   const client = createClient();
-  const page = await client
-    .getByUID("page", params.uid)
-    .catch(() => notFound());
+  const page = await client.getByUID("page", params.uid);
 
   return {
     title: page.data.meta_title,
